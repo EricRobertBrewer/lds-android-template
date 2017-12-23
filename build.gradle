@@ -63,7 +63,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-analytics:${playServicesVersion}"
     implementation "com.google.android.gms:play-services-oss-licenses:${playServicesVersion}"
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta3'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta4'
 
     // Code
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
