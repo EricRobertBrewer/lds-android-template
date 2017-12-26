@@ -21,6 +21,10 @@ class Individual {
     var phone: String = ""
     var email: String = ""
     var available: Boolean = false
+    /**
+     * HTTP URL of PNG picture.
+     */
+    var profilePicture: String = ""
 
     fun getFullName() = "$firstName $lastName"
 }

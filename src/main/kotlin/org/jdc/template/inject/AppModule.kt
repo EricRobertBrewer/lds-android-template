@@ -19,7 +19,9 @@ import org.jdc.template.datasource.database.main.household.HouseholdDao
 import org.jdc.template.datasource.database.main.individual.IndividualDao
 import org.jdc.template.datasource.webservice.ServiceModule
 import org.jdc.template.json.LocalDateTimeTypeConverter
+import org.jdc.template.json.LocalDateTypeConverter
 import org.jdc.template.util.CoroutineContextProvider
+import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -68,6 +70,7 @@ class AppModule(private val application: Application) {
         val builder = GsonBuilder()
 //                .setPrettyPrinting()
                 .registerTypeAdapter(LocalDateTime::class.java, LocalDateTimeTypeConverter())
+                .registerTypeAdapter(LocalDate::class.java, LocalDateTypeConverter())
         return builder.create()
     }
 
