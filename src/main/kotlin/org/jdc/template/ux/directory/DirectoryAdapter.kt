@@ -3,6 +3,7 @@ package org.jdc.template.ux.directory
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item.view.*
 import org.jdc.template.R
 import org.jdc.template.datasource.database.main.individual.IndividualDao
@@ -24,6 +25,13 @@ class DirectoryAdapter : RecyclerViewDiffAdapter<IndividualDao.DirectoryListItem
 
         // bind data to view holder
         holder.itemView.listItemTextView.text = individual.getFullName()
+        // Load profile picture.
+        val thumbnail = holder.itemView.listItemThumbnail
+        Picasso.with(thumbnail.context)
+                .load(individual.profilePicture)
+                .fit()
+                .centerCrop()
+                .into(thumbnail)
     }
 
     override fun areItemsTheSame(oldItem: IndividualDao.DirectoryListItem, newItem: IndividualDao.DirectoryListItem): Boolean {

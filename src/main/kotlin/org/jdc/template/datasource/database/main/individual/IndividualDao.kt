@@ -35,7 +35,7 @@ interface IndividualDao {
     @Query("SELECT * FROM individual")
     fun findAllLiveData(): LiveData<List<Individual>>
 
-    @Query("SELECT id, lastName, firstName FROM individual ORDER BY lastName, firstName")
+    @Query("SELECT id, lastName, firstName, profilePicture FROM individual ORDER BY lastName, firstName")
     fun findAllDirectoryListItemsLiveData(): LiveData<List<DirectoryListItem>>
 
     @Query("DELETE FROM individual WHERE id = :id")
@@ -45,7 +45,7 @@ interface IndividualDao {
     @TypeConverters(DateTimeLongConverter::class)
     fun findLastModified(id: Long): LocalDateTime?
 
-    data class DirectoryListItem(val id: Long, val firstName: String, val lastName: String) {
+    data class DirectoryListItem(val id: Long, val firstName: String, val lastName: String, val profilePicture: String) {
         fun getFullName() = firstName + " " + lastName
     }
 }

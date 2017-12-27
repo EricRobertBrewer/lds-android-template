@@ -6,4 +6,8 @@
     <!-- todo Temp work around for constraint layout and TextImputLayout issue (https://code.google.com/p/android/issues/detail?id=230766)-->
     <item name = "visible" type = "id" />
     <item name = "masked" type = "id" />
+
+    <dimen name="list_item_thumbnail_width">48dp</dimen>
+    <dimen name="list_item_thumbnail_height">48dp</dimen>
+    <dimen name="list_item_thumbnail_margin_right">8dp</dimen>
 </resources>

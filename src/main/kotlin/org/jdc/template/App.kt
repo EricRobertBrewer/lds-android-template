@@ -4,7 +4,9 @@ import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
 import com.evernote.android.job.JobManager
+import com.jakewharton.picasso.OkHttp3Downloader
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.squareup.picasso.Picasso
 import org.jdc.template.inject.Injector
 import org.jdc.template.job.AppJobCreator
 import org.jdc.template.log.DebugTree
@@ -29,6 +31,13 @@ class App : Application() {
 
         // register notification channels
         NotificationChannels.registerAllChannels(this)
+
+        // Initialize Picasso
+        val picasso = Picasso.Builder(this)
+                .downloader(OkHttp3Downloader(this))
+                .indicatorsEnabled(BuildConfig.DEBUG)
+                .build()
+        Picasso.setSingletonInstance(picasso)
     }
 
     private fun setupLogging() {

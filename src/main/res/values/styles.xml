@@ -29,16 +29,15 @@
     <!-- Lists -->
     <style name="ListItemLayout">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?attr/listPreferredItemHeight</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
         <item name="android:background">?attr/selectableItemBackground</item> <!-- background will not highlight when row is tapped without this -->
         <item name="android:gravity">center_vertical</item>
     </style>
     <style name="ListItemText">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">?attr/textAppearanceListItem</item>
     </style>
