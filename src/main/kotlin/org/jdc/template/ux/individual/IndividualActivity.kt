@@ -8,6 +8,7 @@ import android.text.format.DateUtils
 import android.view.Menu
 import android.view.MenuItem
 import com.afollestad.materialdialogs.MaterialDialog
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_individual.*
 import kotlinx.android.synthetic.main.toolbar_actionbar.*
 import me.eugeniomarletti.extras.ActivityCompanion
@@ -99,6 +100,11 @@ class IndividualActivity : BaseActivity() {
     }
 
     private fun showIndividual(individual: Individual) {
+        Picasso.with(this)
+                .load(individual.profilePicture)
+                .fit()
+                .centerCrop()
+                .into(profileImageView)
         nameTextView.text = individual.getFullName()
         phoneTextView.text = individual.phone
         emailTextView.text = individual.email

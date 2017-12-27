@@ -26,6 +26,15 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="25dp">
 
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_picture_height"
+                android:contentDescription="@string/individual_profile_picture"
+                android:scaleType="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:color/white" />
+
             <TextView
                 android:id="@+id/nameTextView"
                 android:layout_width="wrap_content"
@@ -34,8 +43,8 @@
                 android:layout_marginTop="8dp"
                 android:textSize="20sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Jeff Campbell"/>
+                app:layout_constraintTop_toBottomOf="@+id/profileImageView"
+                tools:text="Jeff Campbell" />
 
             <TextView
                 android:id="@+id/phoneTextView"

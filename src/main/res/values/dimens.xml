@@ -10,4 +10,5 @@
     <dimen name="list_item_thumbnail_width">48dp</dimen>
     <dimen name="list_item_thumbnail_height">48dp</dimen>
     <dimen name="list_item_thumbnail_margin_right">8dp</dimen>
+    <dimen name="profile_picture_height">256dp</dimen>
 </resources>
