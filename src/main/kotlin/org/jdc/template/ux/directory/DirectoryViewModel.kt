@@ -18,7 +18,7 @@ class DirectoryViewModel
     }
 
     private fun loadDirectoryList(): LiveData<List<IndividualDao.DirectoryListItem>> {
-        return individualDao.findAllDirectListItemsLiveData()
+        return individualDao.findAllDirectoryListItemsLiveData()
     }
 
     fun addIndividual() {

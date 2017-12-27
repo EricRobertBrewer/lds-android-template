@@ -36,7 +36,7 @@ interface IndividualDao {
     fun findAllLiveData(): LiveData<List<Individual>>
 
     @Query("SELECT id, lastName, firstName FROM individual ORDER BY lastName, firstName")
-    fun findAllDirectListItemsLiveData(): LiveData<List<DirectoryListItem>>
+    fun findAllDirectoryListItemsLiveData(): LiveData<List<DirectoryListItem>>
 
     @Query("DELETE FROM individual WHERE id = :id")
     fun deleteById(id: Long)
