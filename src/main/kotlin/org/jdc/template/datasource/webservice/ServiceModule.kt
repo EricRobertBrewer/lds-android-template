@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.jdc.template.BuildConfig
 import org.jdc.template.auth.MyAccountInterceptor
 import org.jdc.template.datasource.webservice.colors.ColorService
+import org.jdc.template.datasource.webservice.individual.directory.DirectoryService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.UnsupportedEncodingException
@@ -85,6 +86,18 @@ class ServiceModule {
                 .build()
 
         return retrofit.create(ColorService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun getDirectoryService(@Named(STANDARD_CLIENT) client: OkHttpClient, converterFactory: GsonConverterFactory): DirectoryService {
+        val retrofit = Retrofit.Builder()
+                .baseUrl(DirectoryService.Companion.BASE_URL)
+                .client(client)
+                .addConverterFactory(converterFactory)
+                .build()
+
+        return retrofit.create(DirectoryService::class.java)
     }
 
     companion object {
