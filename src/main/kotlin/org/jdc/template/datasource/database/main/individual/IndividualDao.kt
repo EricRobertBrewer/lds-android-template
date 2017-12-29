@@ -47,5 +47,7 @@ interface IndividualDao {
 
     data class DirectoryListItem(val id: Long, val firstName: String, val lastName: String, val profilePicture: String) {
         fun getFullName() = firstName + " " + lastName
+
+        fun contains(term: String) = firstName.contains(term, true) || lastName.contains(term, true)
     }
 }

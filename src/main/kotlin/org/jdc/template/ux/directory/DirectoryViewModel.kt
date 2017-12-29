@@ -1,6 +1,7 @@
 package org.jdc.template.ux.directory
 
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import org.jdc.template.datasource.database.main.individual.IndividualDao
 import org.jdc.template.livedata.SingleLiveEvent
@@ -11,10 +12,11 @@ class DirectoryViewModel
 
     val onNewIndividualEvent = SingleLiveEvent<Void>()
 
-    val directoryList: LiveData<List<IndividualDao.DirectoryListItem>>
+    val allDirectoryList: LiveData<List<IndividualDao.DirectoryListItem>>
+    val directoryList: MutableLiveData<List<IndividualDao.DirectoryListItem>> = MutableLiveData()
 
     init {
-        directoryList = loadDirectoryList()
+        allDirectoryList = loadDirectoryList()
     }
 
     private fun loadDirectoryList(): LiveData<List<IndividualDao.DirectoryListItem>> {

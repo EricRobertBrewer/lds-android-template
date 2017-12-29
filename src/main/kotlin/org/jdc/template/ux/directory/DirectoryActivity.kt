@@ -3,6 +3,7 @@ package org.jdc.template.ux.directory
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
@@ -41,6 +42,22 @@ class DirectoryActivity : DrawerActivity(), SearchView.OnQueryTextListener {
         }
     }
 
+    private var query: String = ""
+    private val queryHandler = Handler()
+    private val queryRunnable = Runnable {
+        val allItems = viewModel.allDirectoryList.value ?: return@Runnable
+        viewModel.directoryList.postValue(if (query.isNotBlank()) {
+            val terms = query.trim().split(Regex(" +"))
+            allItems.filter {
+                terms.all { term ->
+                    it.contains(term)
+                }
+            }
+        } else {
+            allItems
+        })
+    }
+
     init {
         Injector.get().inject(this)
     }
@@ -63,6 +80,9 @@ class DirectoryActivity : DrawerActivity(), SearchView.OnQueryTextListener {
     }
 
     private fun setupViewModelObservers() {
+        viewModel.allDirectoryList.observeNotNull { list ->
+            viewModel.directoryList.postValue(list)
+        }
         viewModel.directoryList.observeNotNull { list ->
             adapter.items = list
         }
@@ -109,11 +129,17 @@ class DirectoryActivity : DrawerActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        throw UnsupportedOperationException()
+        this.query = query ?: ""
+        queryHandler.removeCallbacks(queryRunnable)
+        queryRunnable.run()
+        return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        throw UnsupportedOperationException()
+        this.query = newText ?: ""
+        queryHandler.removeCallbacks(queryRunnable)
+        queryHandler.postDelayed(queryRunnable, 250)
+        return true
     }
 
     private fun showNewIndividual() {
